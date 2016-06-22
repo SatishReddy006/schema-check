@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'idea'
+apply plugin: 'war'
+
+war {
+    baseName = 'schema-check'
+    version = ''
+}
+
+repositories {
+    mavenCentral()
+    maven { 
+     	url "http://repo.maven.apache.org/maven2" 
+    }
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+project.webAppDirName = 'src/main/webapp'
+
+dependencies {
+    
+    compile "org.springframework:spring-beans:${springVersion}"
+	compile "org.springframework:spring-context:${springVersion}"
+	compile "org.springframework:spring-context-support:${springVersion}"
+	compile "org.springframework:spring-core:${springVersion}"
+	compile "org.springframework:spring-expression:${springVersion}"
+	compile "org.springframework:spring-web:${springVersion}"
+	compile "org.springframework:spring-webmvc:${springVersion}"
+		
+	compile "com.googlecode.json-simple:json-simple:1.1.1"
+	compile "org.codehaus.jackson:jackson-mapper-asl:1.9.13"
+	compile "com.google.code.gson:gson:2.5"
+	
+    compile "org.apache.hadoop:hadoop-common:${hadoopVersion}"
+	compile "org.apache.hadoop:hadoop-hdfs:${hadoopVersion}"
+	compile "org.apache.hive:hive-exec:${hiveVersion}"
+	compile "org.apache.hbase:hbase-common:${hbaseVersion}"
+	compile "org.apache.hbase:hbase-server:${hbaseVersion}"
+	
+	compile "commons-fileupload:commons-fileupload:1.2.1"
+	
+	testCompile("junit:junit")
+	      
+}
